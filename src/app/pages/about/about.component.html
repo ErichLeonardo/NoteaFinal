@@ -1,4 +1,19 @@
-<p>Developodo</p>
-<p>{{mensaje}}</p>
-<img [src]="src" alt="Cargando la imagen del momento...">
-<!-- src = 'https://source.unsplash.com/random'-->
+<div class="container" [class.dark-mode]="modoOscuro" [class.light-mode]="!modoOscuro">
+    <div class="logo-container">
+        <img [src]="'./assets/images/angularwhite.png'" alt="Logotipo de Angular en modo oscuro">
+    </div>
+    <div class="name-container">
+        <h1>Erich Leonardo</h1>
+    </div>
+    <div class="paragraph-container"> 
+        <p> Angular es muy versátil y me gusta
+            mucho, es por eso que decidí hacer
+            este proyecto para demostrar mis
+            habilidades con este framework.
+            Espero que les guste. 😁 
+        </p>
+    </div>
+    <div class="button-container">
+        <button class="darklight" (click)="changecolor()">Modo oscuro/Modo claro</button>
+    </div>
+</div>
