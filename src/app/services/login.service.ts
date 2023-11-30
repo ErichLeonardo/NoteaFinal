@@ -12,22 +12,32 @@ export class LoginService {
   loggedIn!: boolean;
   originalPath!:string;
 
-  constructor(private authService: SocialAuthService,
-    private router:Router) {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-      if(this.loggedIn){
-        if(this.originalPath){
-          this.router.navigate([this.originalPath]);
-          this.originalPath='';
-        }else
-          this.router.navigate(['']);
-      }else{
-        this.router.navigate(['/login']);
-      }
-    });
-   }
+  constructor(private authService: SocialAuthService, private router:Router) {
+    this.user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null;
+    if(this.user){
+      this.loggedIn=true;
+      if(this.originalPath){
+        this.router.navigate([this.originalPath]);
+        this.originalPath='';
+      }else
+        this.router.navigate(['']);
+    }else{
+      this.authService.authState.subscribe((user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.user = user;
+        this.loggedIn = (user != null);
+        if(this.loggedIn){
+          if(this.originalPath){
+            this.router.navigate([this.originalPath]);
+            this.originalPath='';
+          }else
+            this.router.navigate(['']);
+        }else{
+          this.router.navigate(['/login']);
+        }
+      });
+    }
+ }
   isAuth():boolean{
     return this.loggedIn;
   }
@@ -39,6 +49,7 @@ export class LoginService {
     return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }*/
   async signOut(): Promise<void> {
+    localStorage.removeItem('user');
     return await this.authService.signOut();
   }
 

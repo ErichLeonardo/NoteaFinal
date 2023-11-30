@@ -28,10 +28,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-
+    
     })
   ],
-  providers: [NotesService,
+  providers: [NotesService,LoginService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
