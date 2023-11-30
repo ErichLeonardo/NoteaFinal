@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-new',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './new.component.html',
+  styleUrls: ['./new.component.css']
 })
-export class LoginComponent implements OnInit {
+export class NewComponent implements OnInit {
 
   constructor() { }
 
