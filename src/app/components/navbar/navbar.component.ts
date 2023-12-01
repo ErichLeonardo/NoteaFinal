@@ -20,16 +20,5 @@ export class NavbarComponent implements OnInit {
     this.loginS.signOut();
   }
 
-  toggleDarkMode() {
-    this.darkMode = !this.darkMode;
 
-    // Puedes cambiar la lógica según tus necesidades
-    if (this.darkMode) {
-      // Aplicar estilos o clases para el modo oscuro
-      document.body.classList.add('dark-mode');
-    } else {
-      // Eliminar estilos o clases para volver al modo claro
-      document.body.classList.remove('dark-mode');
-    }
-  }
 }
